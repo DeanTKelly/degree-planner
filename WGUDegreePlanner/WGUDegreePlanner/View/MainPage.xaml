@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             x:Class="WGUDegreePlanner.MainPage">
+    <StackLayout>
+        <Label Text="WGU Degree Planner" FontSize="Title"  BackgroundColor="MidnightBlue" TextColor="White"
+               HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+               HeightRequest="75"/>
+        <Label Text="Select a term or add a new one." BackgroundColor="White"
+               TextColor="MidnightBlue" HorizontalTextAlignment="Center"/>
+        <ScrollView>
+            <StackLayout>
+                <ListView x:Name="TermsListView" ItemSelected="TermsListView_ItemSelected"
+                          ItemsSource="{Binding Terms}" RefreshCommand="{Binding LoadTermsCommand}"
+                          IsPullToRefreshEnabled="True" IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                          VerticalOptions="FillAndExpand" HasUnevenRows="true" CachingStrategy="RecycleElement">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell >
+                                <ContentView>
+                                    <StackLayout>
+                                        <Label Text="{Binding TermName}" FontSize="Large" VerticalOptions="CenterAndExpand" 
+                                               HorizontalOptions="CenterAndExpand" TextColor="MidnightBlue"/>
+                                    </StackLayout>
+                                </ContentView>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+        <StackLayout Padding="10">
+            <Button x:Name="addNewTermButton" BackgroundColor="MidnightBlue" Text="Add Term" TextColor="White" 
+                FontSize="Medium" Command="{Binding AddNewTermCommand}" HeightRequest="50"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

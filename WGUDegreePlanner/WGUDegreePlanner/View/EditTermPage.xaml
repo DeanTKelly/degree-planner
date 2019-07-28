@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WGUDegreePlanner.View.EditTermPage">
+    <StackLayout>
+        <Label Text="Edit Term" FontSize="Title"  BackgroundColor="MidnightBlue" TextColor="White"
+               HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+               HeightRequest="50"/>
+            <StackLayout Padding="10">
+                <Label Text="Term Name:" TextColor="MidnightBlue"/>
+                <Entry Text="{Binding TermName}"/>
+            <Label Text="Term Start Date:" TextColor="MidnightBlue"/>
+                <DatePicker Date="{Binding TermStartDate}" MaximumDate="{Binding TermEndDate}"/>
+            <Label Text="Term End Date:" TextColor="MidnightBlue"/>
+                <DatePicker Date="{Binding TermEndDate}" MinimumDate="{Binding TermStartDate}"/>
+            </StackLayout>        
+        <StackLayout Padding="10">
+        <Button x:Name="saveNewTermButton" BackgroundColor="MidnightBlue" Text="Save" TextColor="White" 
+                FontSize="Medium" Command="{Binding SaveButtonCommand}" HeightRequest="50"/>
+        <Button x:Name="cancelNewTermButton" BackgroundColor="MidnightBlue" Text="Cancel" TextColor="White" 
+                FontSize="Medium" Command="{Binding CancelButtonCommand}" HeightRequest="50"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

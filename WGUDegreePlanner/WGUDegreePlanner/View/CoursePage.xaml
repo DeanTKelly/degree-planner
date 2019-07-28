@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WGUDegreePlanner.View.CoursePage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit Course" Command="{Binding EditButtonCommand}"/>
+        <ToolbarItem Text="Delete Course" Command="{Binding DeleteButtonCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="{Binding CourseName}" FontSize="Large"  BackgroundColor="MidnightBlue" 
+                   TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                   HeightRequest="50"/>
+        <ScrollView>
+            <StackLayout>
+                    <StackLayout Padding="10">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Course Status: " TextColor="MidnightBlue" Grid.Row="0" 
+                               Grid.Column="0" HorizontalOptions="StartAndExpand"/>
+                        <Label Text="{Binding CourseStatus}" TextColor="MidnightBlue" Grid.Row="0" 
+                               Grid.Column="1" HorizontalOptions="EndAndExpand"/>
+                        <Label Text="Start Date: " TextColor="MidnightBlue" Grid.Row="1"
+                               Grid.Column="0" HorizontalOptions="StartAndExpand"/>
+                        <Label Text="{Binding CourseStartDate}" TextColor="MidnightBlue"
+                               Grid.Row="1" Grid.Column="1" HorizontalOptions="EndAndExpand"/>
+                        <Label Text="End Date: " TextColor="MidnightBlue" Grid.Row="2"
+                               Grid.Column="0" HorizontalOptions="StartAndExpand"/>
+                        <Label Text="{Binding CourseEndDate}" TextColor="MidnightBlue"
+                               Grid.Row="2" Grid.Column="1" HorizontalOptions="EndAndExpand"/>                        
+                    </Grid>
+                    </StackLayout>
+                    <Label Text="Course Notes: " TextColor="MidnightBlue"/>
+                    <Editor Text="{Binding CourseNotes}" FontSize="Small" HeightRequest="50"/>
+                    <StackLayout Padding="10">
+                        <Button x:Name="shareCourseNotes" Text="Share Course Notes" Command="{Binding ShareCourseNotesCommand}"
+                            BackgroundColor="SteelBlue" TextColor="White"/>
+                    </StackLayout>
+                    <Label Text="Course Instructor: " TextColor="MidnightBlue" FontAttributes="Bold"
+                       VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                    <Grid BackgroundColor="AntiqueWhite">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                        <Label Text="Name: " TextColor="MidnightBlue" Grid.Row="0"
+                               Grid.Column="0" HorizontalOptions="StartAndExpand"
+                               VerticalTextAlignment="Center"/>
+                        <Label Text="{Binding InstructorName}" TextColor="MidnightBlue"
+                               Grid.Row="0" Grid.Column="1" HorizontalOptions="EndAndExpand"
+                               VerticalTextAlignment="Center"/>
+                        <Label Text="Phone Number: " TextColor="MidnightBlue" Grid.Row="1"
+                               Grid.Column="0" HorizontalOptions="StartAndExpand"
+                               VerticalTextAlignment="Center"/>
+                        <Label Text="{Binding InstructorPhone}" TextColor="MidnightBlue"
+                               Grid.Row="1" Grid.Column="1" HorizontalOptions="EndAndExpand"
+                               VerticalTextAlignment="Center"/>
+                        <Label Text="Email Address: " TextColor="MidnightBlue" Grid.Row="2"
+                               Grid.Column="0" HorizontalOptions="StartAndExpand"
+                               VerticalTextAlignment="Center"/>
+                        <Label Text="{Binding InstructorEmail}" TextColor="MidnightBlue"
+                               Grid.Row="2" Grid.Column="1" HorizontalOptions="EndAndExpand"
+                               VerticalTextAlignment="Center"/>
+                    </Grid>
+                    <Label Text="Assessments" FontSize="Large"  BackgroundColor="MidnightBlue" 
+                   TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                   HeightRequest="50"/>                
+                    <StackLayout Padding="10">
+                        <ListView x:Name="AssessmentListView" ItemsSource="{Binding AssessmentList}"
+                                  ItemSelected="AssessmentListView_ItemSelected"
+                                  RefreshCommand="{Binding LoadAssessmentsCommand}"
+                                  IsPullToRefreshEnabled="True" IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                          VerticalOptions="FillAndExpand" HasUnevenRows="true" CachingStrategy="RecycleElement">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell Height="60">
+                                        <ContentView>
+                                            <StackLayout Padding="10">
+                                                <Label Text="{Binding AssessmentType}" FontSize="Small"
+                                                       TextColor="MidnightBlue" HorizontalTextAlignment="Center" 
+                                                           VerticalOptions="Center"/>
+                                                <Label Text="{Binding AssessmentName}" FontSize="Small"
+                                                       TextColor="MidnightBlue" HorizontalTextAlignment="Center" 
+                                                           VerticalOptions="Center"/>
+                                            </StackLayout>
+                                        </ContentView>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>                    
+                </StackLayout>
+                </StackLayout>
+        </ScrollView>
+            <StackLayout Padding="10">
+                <Button Text="Add Assessment" BackgroundColor="MidnightBlue"
+                        TextColor="White" Command="{Binding ScheduleAssessmentsCommand}"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

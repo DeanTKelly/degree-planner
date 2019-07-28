@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WGUDegreePlanner.View.TermPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit Term" Command="{Binding EditTermCommand}"/>
+        <ToolbarItem Text="Delete Term" Command="{Binding DeleteTermCommand}"/>
+    </ContentPage.ToolbarItems>
+        <StackLayout Padding="0">
+        <Label Text="{Binding TermName}" FontSize="Title" VerticalTextAlignment="Start"
+                           HorizontalTextAlignment="Center" BackgroundColor="MidnightBlue"
+                           TextColor="White" HeightRequest="50"/>
+        <ScrollView>
+                <StackLayout>                    
+                    <ListView x:Name="CourseListView" ItemsSource="{Binding CourseList}"
+                              ItemSelected="CourseListView_ItemSelected" 
+                              RefreshCommand="{Binding LoadTermsCommand}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <ContentView>
+                                        <StackLayout>
+                                            <Label Text="{Binding CourseName}" FontSize="Medium"
+                                                   TextColor="MidnightBlue" HorizontalTextAlignment="Center"/>
+                                        </StackLayout>
+                                    </ContentView>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </ScrollView>
+        <StackLayout Padding="10">
+        <Button x:Name="addNewCourseButton" BackgroundColor="MidnightBlue" Text="Add Course" TextColor="White" 
+                FontSize="Medium" Command="{Binding AddCourseCommand}" HeightRequest="50"/>        
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WGUDegreePlanner.View.AddNewCoursePage">
+    <StackLayout>
+        <Label Text="New Course" FontSize="Title"  BackgroundColor="MidnightBlue" TextColor="White"
+               HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+               HeightRequest="75"/>
+    <ScrollView>
+            <StackLayout Padding="10">
+                <Label Text="Course Name:" TextColor="MidnightBlue"/>
+                <Entry Text="{Binding CourseName}"/>
+                <Label Text="Course Status:" TextColor="MidnightBlue"/>
+                <Picker ItemsSource="{Binding CourseStatusList}" SelectedItem="{Binding CourseStatus}"/>
+                <Label Text="Course Start Date:" TextColor="MidnightBlue"/>
+                <DatePicker Date="{Binding CourseStartDate}" MaximumDate="{Binding CourseEndDate}"/>
+                <Label Text="Course End Date:" TextColor="MidnightBlue"/>
+                <DatePicker Date="{Binding CourseEndDate}" MinimumDate="{Binding CourseStartDate}"/>
+                <Label Text="Activate Course Notifications" TextColor="MidnightBlue"/>
+                <Switch IsToggled="{Binding CourseNotifications}"/>
+                
+                <Label Text="Instructor Name:" TextColor="MidnightBlue"/>
+                <Entry Text="{Binding InstructorName}"/>
+                <Label Text="Instructor Phone Number:" TextColor="MidnightBlue"/>
+                <Entry Text="{Binding InstructorPhone}"/>
+                <Label Text="Instructor Email Address:" TextColor="MidnightBlue"/>
+                <Entry Text="{Binding InstructorEmail}"/>
+                <Label Text="Course Notes:" TextColor="MidnightBlue"/>
+                <Editor Text="{Binding CourseNotes}" HeightRequest="100"/>                
+            </StackLayout>
+        </ScrollView>
+        <StackLayout Padding="10">
+            <Button x:Name="saveNewCourseButton" BackgroundColor="MidnightBlue" Text="Save" TextColor="White" 
+                FontAttributes="Bold" FontSize="Medium" Command="{Binding SaveNewCourseButtonCommand}"/>
+            <Button x:Name="cancelNewCourseButton" BackgroundColor="MidnightBlue" Text="Cancel" TextColor="White" 
+                FontAttributes="Bold" FontSize="Medium" Command="{Binding CancelNewCourseButtonCommand}"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

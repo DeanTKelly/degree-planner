@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WGUDegreePlanner.View.EditAssessmentsPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Delete Assessment" Command="{Binding DeleteAssessmentCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Edit Assessment" FontSize="Title"  BackgroundColor="MidnightBlue" TextColor="White"
+               HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+               HeightRequest="75"/>
+            <ScrollView>
+                <StackLayout Padding="10">
+                    <Label Text="Name:" TextColor="MidnightBlue"/>
+                    <Entry Text="{Binding AssessmentName}"/>
+                    <Label Text="Assessment Type:" TextColor="MidnightBlue"/>
+                    <Picker ItemsSource="{Binding AssessmentTypeList}" SelectedItem="{Binding AssessmentType}"/>
+                    <Label Text="Start Date:" TextColor="MidnightBlue"/>
+                    <DatePicker Date="{Binding AssessmentStartDate}" MaximumDate="{Binding AssessmentEndDate}"/>
+                    <Label Text="End Date:" TextColor="MidnightBlue"/>
+                    <DatePicker Date="{Binding AssessmentEndDate}" MinimumDate="{Binding AssessmentStartDate}"/>
+                    <Label Text="Activate Objective Assessment Notifications" TextColor="MidnightBlue"/>
+                    <Switch IsToggled="{Binding OAssessmentNotifications}"/>
+                </StackLayout>
+            </ScrollView>
+            <StackLayout Padding="10">
+                <Button x:Name="saveButton" BackgroundColor="MidnightBlue" Text="Save" TextColor="White" 
+                FontAttributes="Bold" FontSize="Medium" Command="{Binding SaveButtonCommand}"/>
+                <Button x:Name="cancelButton" BackgroundColor="MidnightBlue" Text="Cancel" TextColor="White" 
+                FontAttributes="Bold" FontSize="Medium" Command="{Binding CancelButtonCommand}"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WGUDegreePlanner.View.AssessmentPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit Assessment" Command="{Binding EditButtonCommand}"/>
+        <ToolbarItem Text="Delete Assessment" Command="{Binding DeleteButtonCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="{Binding AssessmentName}" FontSize="Title"  BackgroundColor="MidnightBlue" 
+                   TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                   HeightRequest="45"/>
+        <ScrollView>
+        <StackLayout Padding="10">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Assessment Type: " TextColor="MidnightBlue" Grid.Row="0" 
+                               Grid.Column="0" HorizontalOptions="StartAndExpand"/>
+                        <Label Text="{Binding AssessmentType}" TextColor="MidnightBlue" Grid.Row="0" 
+                               Grid.Column="1" HorizontalOptions="EndAndExpand"/>
+                        <Label Text="Start Date: " TextColor="MidnightBlue" Grid.Row="1"
+                               Grid.Column="0" HorizontalOptions="StartAndExpand"/>
+                        <Label Text="{Binding AssessmentStartDate}" TextColor="MidnightBlue"
+                               Grid.Row="1" Grid.Column="1" HorizontalOptions="EndAndExpand"/>
+                        <Label Text="End Date: " TextColor="MidnightBlue" Grid.Row="2"
+                               Grid.Column="0" HorizontalOptions="StartAndExpand"/>
+                        <Label Text="{Binding AssessmentEndDate}" TextColor="MidnightBlue"
+                               Grid.Row="2" Grid.Column="1" HorizontalOptions="EndAndExpand"/>
+                    </Grid>
+                </StackLayout>
+        </ScrollView>        
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
