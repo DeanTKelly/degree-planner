@@ -11,7 +11,6 @@ namespace WGUDegreePlanner
     public class Database
     {
         public static SQLiteAsyncConnection connection;
-
         public Database(string databasePath)
         {
             connection = new SQLiteAsyncConnection(databasePath);
